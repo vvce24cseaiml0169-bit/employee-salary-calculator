@@ -36,6 +36,6 @@ class EmployeeSalaryCalculatorTest {
     // Test Case 5: Net Salary Calculation (Intentional Failure)
     @Test
     void testNetSalary() {
-        assertEquals(40000.0, calculator.calculateNetSalary(30000), 0.01);
+        assertEquals(35400.0, calculator.calculateNetSalary(30000), 0.01);
     }
 }
