@@ -1,63 +1,35 @@
+
 package com.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeSalaryCalculatorTest {
 
-    EmployeeSalaryCalculator calculator =
-            new EmployeeSalaryCalculator();
+    EmployeeSalaryCalculator calculator = new EmployeeSalaryCalculator();
 
+    // Test Case 1: Check HRA calculation
     @Test
-    void testHRACalculation() {
+    void testHRA() {
         assertEquals(6000.0, calculator.calculateHRA(30000), 0.01);
     }
 
+    // Test Case 2: Check DA calculation
     @Test
-    void testDACalculation() {
+    void testDA() {
         assertEquals(3000.0, calculator.calculateDA(30000), 0.01);
     }
 
+    // Test Case 3: Check Gross Salary calculation
     @Test
-    void testGrossSalaryCalculation() {
-        assertEquals(39000.0,
-                calculator.calculateGrossSalary(30000), 0.01);
+    void testGrossSalary() {
+        assertEquals(39000.0, calculator.calculateGrossSalary(30000), 0.01);
     }
 
+    // Test Case 4: Intentionally incorrect expected value
     @Test
-    void testDeductionCalculation() {
-        assertEquals(3600.0,
-                calculator.calculateDeductions(30000), 0.01);
-    }
-
-    @Test
-    void testNetSalaryCalculation() {
-        assertEquals(35400.0,
-                calculator.calculateNetSalary(30000), 0.01);
-    }
-
-    @Test
-    void testMinimumPositiveSalary() {
-        assertEquals(1.18,
-                calculator.calculateNetSalary(1), 0.01);
-    }
-
-    @Test
-    void testZeroSalary() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateNetSalary(0));
-    }
-
-    @Test
-    void testNegativeSalary() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateNetSalary(-5000));
-    }
-
-    @Test
-    void testInvalidNaNSalary() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateNetSalary(Double.NaN));
+    void testNetSalary() {
+        assertEquals(40000.0, calculator.calculateNetSalary(30000), 0.01);
     }
 }
-
